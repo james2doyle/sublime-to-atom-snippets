@@ -1,0 +1,36 @@
+{
+  "name": "sublime-to-atom-snippets",
+  "version": "0.0.1",
+  "description": "a node script to convert a folder of sublime snippets, into cson atom snippets.",
+  "main": "index.js",
+  "dependencies": {
+    "jsesc": "~0.4.3",
+    "xml2js": "~0.4.1"
+  },
+  "devDependencies": {
+    "jsesc": "^0.4.3",
+    "xml2js": "^0.4.1",
+    "async": "^0.2.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/james2doyle/sublime-to-atom-snippets"
+  },
+  "keywords": [
+    "sublime",
+    "snippets",
+    "atom",
+    "cson",
+    "xml",
+    "converted"
+  ],
+  "author": "James Doyle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/james2doyle/sublime-to-atom-snippets/issues"
+  },
+  "homepage": "https://github.com/james2doyle/sublime-to-atom-snippets"
+}
