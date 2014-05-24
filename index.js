@@ -3,6 +3,30 @@
  * convert sublime text snippets to atom editot cson snippets
  * Copyright (c) 2014, James Doyle. (MIT Licensed)
  */
+var verbose = false;
+var default_snip_type = false;
+
+process.argv.forEach(function (val, index, array) {
+
+    if (val == '--help') {
+        console.log('Utility convert sublime text snippets in atom compatible ones. \\n Usage: \\n node index.js [--default-snip-type source.php] [--verbose] ');
+        process.exit(0);
+    } else if (val == '-v' || val == '--verbose') {
+        verbose = true;
+        if (verbose) {
+          console.log('Found verbose rule');
+        }
+
+    } else if (val == '--default-snip-type' || val == '-dst') {
+      default_snip_type = array[index+1];
+
+      if (verbose) {
+        console.log('Found default snip type: '+default_snip_type);
+      }
+    }
+
+});
+
 
  var fs = require('fs'),
  path = require('path'),
@@ -25,8 +49,16 @@
   var content = jsesc(snip.content[0].trim()).replace("\\\\", "\\");
   // cson template. gross.
   if (!snip.scope) {
-    console.log("\n", path.basename(file));
-    throw new Error('Scope Must Be Set');
+
+    if (default_snip_type) {
+
+        snip.scope = {};
+        snip.scope[0] = default_snip_type;
+
+    } else {
+      console.log("\n", path.basename(file));
+      throw new Error('Scope Must Be Set');
+    }
   }
   var template = "\'." + snip.scope[0] + "\':\n  \'" + snip.info + "\':\n    \'prefix\': \'" + snip.tabTrigger + "\'\n    \'body\': \'" + content + "\'";
   callback(null, template);
@@ -103,6 +135,11 @@ function handleFile(file) {
       parser.parseString(dataToParse, callback);
     },
     function(parsed, callback) {
+
+      if (!parsed || !parsed.snippet) {
+        console.log('The file: '+file+' does not contain the required <snippet> tag. Forcing quit');
+        return  1;
+      }
       makeCson(file, parsed.snippet, callback);
     },
     function(csonoutput, callback) {
