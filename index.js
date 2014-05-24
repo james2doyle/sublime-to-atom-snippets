@@ -49,7 +49,7 @@ process.argv.forEach(function (val, index, array) {
   // cson template. gross.
   if (!snip.scope) {
 
-    if (defaut_snip_type) {
+    if (default_snip_type) {
 
         snip.scope = default_snip_type;
 
