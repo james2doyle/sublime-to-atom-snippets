@@ -9,6 +9,7 @@ process.argv.forEach(function (val, index, array) {
 
     if (val == '--help') {
         console.log('Utility convert sublime text snippets in atom compatible ones. \\n Usage: \\n node index.js [--default-snip-type=source.php] [--verbose] ');
+        process.exit(0);
     } else if (val == '-v' || val == '--verbose') {
         verbose = true;
         if (verbose) {
