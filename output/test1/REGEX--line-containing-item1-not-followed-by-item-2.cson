@@ -1,0 +1,4 @@
+'..source.js':
+  'REGEX--line-containing-item1-not-followed-by-item-2':
+    'prefix': 'REGEX_item2notAfterItem1'
+    'body': '//REGEX: search through search results to see files that are not within (in the example) node_modules,\n// but that have /file/path/ (in the example) preceding node_modules.\n//with (or contain)\n((\/file\\/path\\/)((?!node_modules).)*)$'

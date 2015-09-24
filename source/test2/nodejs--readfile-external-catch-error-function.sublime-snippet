@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * Catch read errors resulting from failed fs.readFile calls
+ * @param  {Function} next 	callback - run after error handling complete
+ * @param  {Object}   err  	An error, if an error occurred
+ * @param  {Buffer}   data 	Data returned from file (if file read succeeded)
+ * @return {ANY}      		Return from callback is returned.
+ */
+var catchReadErr = function handleFileErr(next, err, data){
+	if (err) {
+		console.log("ERROR: " + err);
+		throw err;
+	}
+	return ((next) ? next(data) : data);
+};
+
+//Read in file pathToFile, return file contents in Buffer 'data' if successful
+fs.readFile('${1:./path/to/file}', catchReadErr.bind(this, function rfCb(data){
+	${3:codeHere}
+}));
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>rfe</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

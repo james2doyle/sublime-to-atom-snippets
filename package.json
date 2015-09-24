@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "jsesc": "~0.4.3",
+    "recursive-readdir": "^1.2.1",
     "xml2js": "~0.4.1"
   },
   "devDependencies": {
