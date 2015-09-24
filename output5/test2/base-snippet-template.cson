@@ -1,4 +1,0 @@
-'..source.js':
-  'base-snippet-template':
-    'prefix': 'undefined'
-    'body': 'Hello, ${1:this} is a ${2:snippet}.'

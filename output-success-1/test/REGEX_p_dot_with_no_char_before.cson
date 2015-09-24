@@ -1,4 +1,0 @@
-'..source.js':
-  'REGEX_p_dot_with_no_char_before':
-    'prefix': 'undefined'
-    'body': '(?<!\w)p\\.'

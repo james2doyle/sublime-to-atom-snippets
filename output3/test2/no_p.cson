@@ -1,4 +1,0 @@
-'..source.js':
-  'no_p':
-    'prefix': 'undefined'
-    'body': '(?<!\w)p\\.'

@@ -1,4 +1,0 @@
-'.source.js':
-  '$.when sequential promises example':
-    'prefix': 'undefined'
-    'body': 'function timeout(x) {\n  var $d = $.Deferred();\n  setTimeout(function() {\n    $d.resolve(x);\n  }, x);\n  return $d.promise();\n}\n\n$.when(timeout(800), timeout(500)).done(function(x1, x2) {\n  // arguments become the resolved values\n  console.log(x1, x2); // 800 500\n});'

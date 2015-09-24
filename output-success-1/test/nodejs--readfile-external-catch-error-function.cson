@@ -1,4 +1,0 @@
-'.source.js':
-  'nodejs--readfile-external-catch-error-function':
-    'prefix': 'rfe'
-    'body': '/**\n * Catch read errors resulting from failed fs.readFile calls\n * @param  {Function} next \tcallback - run after error handling complete\n * @param  {Object}   err  \tAn error, if an error occurred\n * @param  {Buffer}   data \tData returned from file (if file read succeeded)\n * @return {ANY}      \t\tReturn from callback is returned.\n */\nvar catchReadErr = function handleFileErr(next, err, data){\n\tif (err) {\n\t\tconsole.log("ERROR: " + err);\n\t\tthrow err;\n\t}\n\treturn ((next) ? next(data) : data);\n};\n\n//Read in file pathToFile, return file contents in Buffer \'data\' if successful\nfs.readFile(\'${1:./path/to/file}\', catchReadErr.bind(this, function rfCb(data){\n\t${3:codeHere}\n}));'
